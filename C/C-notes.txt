@@ -1,0 +1,85 @@
+# Compiling
+
+Before any C code can run, the computer was 'translate' the code you've written into machine-understandable code. This is known as compiling. You can also combine multiple files into a single file.
+
+# Variables & Functions
+
+You must declare functions in header files. This is called prototyping, and it allows to say what data passes in and out of functions through the program. It's like a menu for a restaurant.
+
+e.g. #include "physics_formulae.h"
+
+And then you can have those actual functions in another file called "physics_formulae.c" and have the main() use those functions.
+
+When printing strings, you use %i for int, %f for float, and etc, and then include them after a comma
+
+e.g. printf("My favorite number is: %i", favoriteNumber);
+
+# Casting
+
+The C language is very strict when it comes to handling data. You can't just pass a decimal (aka "float") as an integer, and vice-versa. To "convert" or "cast" one variable type into another, just declare the type in front of the variable in brackets.
+
+e.g. number = 5.525; newNumber = (int)number; newNumber now equals 5
+
+Note how it doesn't round up! It just "hides" all the numbers after the decimal point. You can do the same with functions:
+
+e.g. float circumfurence(float radius); approxCircumference = (int)circumference(5.5);
+
+# Structs
+
+Variables inside variables! You must call typedef to create a new variable type for a struct. For example, if I want to create a variable with multiple sub-variables:
+
+e.g. typedef struct {
+int var1;
+int var2;
+} Mega-var;
+
+And then you can use functions to "construct" each "Mega-var" or alternatively, use some specialised syntax to assign variables:
+
+e.g. Mega-var thingy {999, 555};
+
+And then use another function to manipulate / display its contents.
+
+# Constants & Enums
+
+Constants are assigned once, and enums are basically like structs, but all constant (like a mini-library of related constants)
+
+# C Memory Allocation
+
+Each int takes up about 4 bytes of memory. Global variables are stored in an overall-accessible "data segment" and local variables (function-scope) are stored in a temporary "stack", which clears every time a function is run.
+
+Side-note: anything with the "#" in code isn't actual program code, they're instructions for the compiler. So, for example, if you want to set a variable to replace on compile:
+
+e.g. #define NAME "CJ"
+
+It will replace all areas of the code which says "NAME" with "CJ", *and then* it will compile.
+
+# Arrays in C
+
+C is very strict: you can't change the size of an array— you must define the size at the very beginning. So the length is already known. However, some arrays can be built on the fly, such as building a function that defines the array length as an input
+
+e.g. arrayLengthFunction(); newArray[(int)arrayLengthFunctionOutput];
+
+Another fun thing to note that in C, any basic string is an array. It's an array of characters:
+
+e.g. char lastName[11] = "Melegrito"; 
+
+My last name has 9 characters. The last array slot is for the string terminator, or the "null terminator", and then C adds it after.
+
+e.g. lastName[10] = '\0';
+
+# Pointers
+
+Pointers in C *point* to the location of a variable (or a function) in the computer's memory. It's location is encoded in hexidecimal format (just like web colors!). To declare pointers:
+
+e.g. int* pointer;
+
+And to fetch the pointer (the _location_):
+
+e.g. printf(pointer);
+
+And to fetch the "data" of the pointer:
+
+e.g. printf(*pointer);
+
+Note the use of the asterisk in two different cases!
+
